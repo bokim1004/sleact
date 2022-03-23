@@ -53,8 +53,8 @@ const SignUp = () => {
           .catch((error) => {
             console.log(error.response);
             setSignUpError(error.response.data);
-          })
-          .finally(() => {});
+          });
+        // .finally(() => {});
       }
     },
     [email, nickname, password, passwordCheck, mismatchError],
