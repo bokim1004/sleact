@@ -25,6 +25,7 @@ const LogIn = () => {
           },
         )
         .then((response) => {
+          mutate(response.data, false); // OPTIMISTIC UI => 긍정적인 UI 먼저 성공할거라고 생각하고 그 다음 확인하는 것. (기본적으로는 passimistic UI)
           revalidate();
         })
         .catch((error) => {
@@ -33,6 +34,7 @@ const LogIn = () => {
     },
     [email, password],
   );
+  //리턴은 hooks보다 아래에 위치해야 한다. 안그러면 에러난다. 리턴하는 위치도 신경써줘야 한다.
 
   if (data === undefined) {
     return <div>로딩중...</div>;
